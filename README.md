@@ -37,9 +37,17 @@ Each `MCP_*.md` file documents when Claude should reach for that server over the
 
 [`MODE_Business_Panel.md`](MODE_Business_Panel.md), [`BUSINESS_PANEL_EXAMPLES.md`](BUSINESS_PANEL_EXAMPLES.md), and [`BUSINESS_SYMBOLS.md`](BUSINESS_SYMBOLS.md) configure a multi-expert business-strategy panel (Christensen, Porter, Drucker, Godin, Kim & Mauborgne, Collins, Taleb, Meadows, Doumont) that can run in discussion, debate, or Socratic mode — used for evaluating product/strategy decisions from multiple frameworks at once instead of a single generic take.
 
+## Skills
+
+Custom Claude Code [Skills](https://code.claude.com/docs/en/skills) I use day-to-day, invoked as slash commands (e.g. `/tubeinfo <url>`) or triggered automatically when the request matches.
+
+| Skill | Purpose |
+|---|---|
+| [Skills/tubeinfo](Skills/tubeinfo/SKILL.md) | Summarizes a YouTube video (channel info, view/like/comment counts, chapters, full transcript) via the TubeAlfred MCP server |
+
 ## Usage
 
-Drop these files in `~/.claude/` (global) or `.claude/` (per-project) and reference them from your own `CLAUDE.md` via `@filename.md` imports, same as this repo's [`CLAUDE.md`](CLAUDE.md) does.
+Drop these files in `~/.claude/` (global) or `.claude/` (per-project) and reference them from your own `CLAUDE.md` via `@filename.md` imports, same as this repo's [`CLAUDE.md`](CLAUDE.md) does. Skills go in `~/.claude/skills/<name>/SKILL.md` (global) or `.claude/skills/` (per-project).
 
 ## Built with
 
