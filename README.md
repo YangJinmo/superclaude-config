@@ -44,6 +44,7 @@ Custom Claude Code [Skills](https://code.claude.com/docs/en/skills) I use day-to
 | Skill | Purpose |
 |---|---|
 | [Skills/tubeinfo](Skills/tubeinfo/SKILL.md) | Summarizes a YouTube video (channel info, view/like/comment counts, chapters, full transcript) via the TubeAlfred MCP server |
+| [Skills/app-mockup](Skills/app-mockup/SKILL.md) | Composites app screenshots into iPhone/Galaxy device mockup frames (Dynamic Island/notch/punch-hole, status bar, home indicator/nav bar handling) as a single transparent-background image |
 
 ## Usage
 
