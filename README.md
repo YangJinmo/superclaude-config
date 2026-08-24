@@ -39,16 +39,25 @@ Each `MCP_*.md` file documents when Claude should reach for that server over the
 
 ## Skills
 
-Custom Claude Code [Skills](https://code.claude.com/docs/en/skills) I use day-to-day, invoked as slash commands (e.g. `/tubeinfo <url>`) or triggered automatically when the request matches.
+Custom Claude Code [Skills](https://code.claude.com/docs/en/skills) I use day-to-day — the actual instructions Claude follows, triggered automatically when a request matches the skill's description.
 
 | Skill | Purpose |
 |---|---|
 | [Skills/tubeinfo](Skills/tubeinfo/SKILL.md) | Summarizes a YouTube video (channel info, view/like/comment counts, chapters, full transcript) via the TubeAlfred MCP server |
 | [Skills/app-mockup](Skills/app-mockup/SKILL.md) | Composites app screenshots into iPhone/Galaxy device mockup frames (Dynamic Island/notch/punch-hole, status bar, home indicator/nav bar handling) as a single transparent-background image |
 
+## Commands
+
+Thin slash-command wrappers (same pattern as `/sc:*`) that give a Skill a real `/name`, autocompleted entry point instead of relying on Claude to infer intent from the description. Each one just calls the matching Skill above — no logic duplicated between the two.
+
+| Command | Calls |
+|---|---|
+| [Commands/tubeinfo.md](Commands/tubeinfo.md) | `/tubeinfo <url>` → Skills/tubeinfo |
+| [Commands/app-mockup.md](Commands/app-mockup.md) | `/app-mockup` → Skills/app-mockup |
+
 ## Usage
 
-Drop these files in `~/.claude/` (global) or `.claude/` (per-project) and reference them from your own `CLAUDE.md` via `@filename.md` imports, same as this repo's [`CLAUDE.md`](CLAUDE.md) does. Skills go in `~/.claude/skills/<name>/SKILL.md` (global) or `.claude/skills/` (per-project).
+Drop these files in `~/.claude/` (global) or `.claude/` (per-project) and reference them from your own `CLAUDE.md` via `@filename.md` imports, same as this repo's [`CLAUDE.md`](CLAUDE.md) does. Skills go in `~/.claude/skills/<name>/SKILL.md` (global) or `.claude/skills/` (per-project); commands go in `~/.claude/commands/<name>.md` (global) or `.claude/commands/` (per-project) — a subfolder namespaces them (e.g. `sc/analyze.md` → `/sc:analyze`), a flat file doesn't (e.g. `tubeinfo.md` → `/tubeinfo`).
 
 ## Built with
 
