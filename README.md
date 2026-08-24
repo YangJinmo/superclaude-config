@@ -43,7 +43,7 @@ Custom Claude Code [Skills](https://code.claude.com/docs/en/skills) I use day-to
 
 | Skill | Purpose |
 |---|---|
-| [Skills/tubeinfo](Skills/tubeinfo/SKILL.md) | Summarizes a YouTube video (channel info, view/like/comment counts, chapters, full transcript) via the TubeAlfred MCP server |
+| [Skills/tube-info](Skills/tube-info/SKILL.md) | Summarizes a YouTube video (channel info, view/like/comment counts, chapters, full transcript) via the TubeAlfred MCP server |
 | [Skills/app-mockup](Skills/app-mockup/SKILL.md) | Composites app screenshots into iPhone/Galaxy device mockup frames (Dynamic Island/notch/punch-hole, status bar, home indicator/nav bar handling) as a single transparent-background image |
 
 ## Commands
@@ -52,12 +52,12 @@ Thin slash-command wrappers (same pattern as `/sc:*`) that give a Skill a real `
 
 | Command | Calls |
 |---|---|
-| [Commands/tubeinfo.md](Commands/tubeinfo.md) | `/tubeinfo <url>` → Skills/tubeinfo |
+| [Commands/tube-info.md](Commands/tube-info.md) | `/tube-info <url>` → Skills/tube-info |
 | [Commands/app-mockup.md](Commands/app-mockup.md) | `/app-mockup` → Skills/app-mockup |
 
 ## Usage
 
-Drop these files in `~/.claude/` (global) or `.claude/` (per-project) and reference them from your own `CLAUDE.md` via `@filename.md` imports, same as this repo's [`CLAUDE.md`](CLAUDE.md) does. Skills go in `~/.claude/skills/<name>/SKILL.md` (global) or `.claude/skills/` (per-project); commands go in `~/.claude/commands/<name>.md` (global) or `.claude/commands/` (per-project) — a subfolder namespaces them (e.g. `sc/analyze.md` → `/sc:analyze`), a flat file doesn't (e.g. `tubeinfo.md` → `/tubeinfo`).
+Drop these files in `~/.claude/` (global) or `.claude/` (per-project) and reference them from your own `CLAUDE.md` via `@filename.md` imports, same as this repo's [`CLAUDE.md`](CLAUDE.md) does. Skills go in `~/.claude/skills/<name>/SKILL.md` (global) or `.claude/skills/` (per-project); commands go in `~/.claude/commands/<name>.md` (global) or `.claude/commands/` (per-project) — a subfolder namespaces them (e.g. `sc/analyze.md` → `/sc:analyze`), a flat file doesn't (e.g. `tube-info.md` → `/tube-info`).
 
 ## Built with
 
