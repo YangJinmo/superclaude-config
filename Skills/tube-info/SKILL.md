@@ -11,9 +11,9 @@ description: TubeAlfred MCP 도구로 유튜브 영상의 채널정보(채널명
 
 1. **URL 확보**: 인자로 유튜브 URL이 주어지면 그것을 사용한다. 없으면 사용자에게 물어본다.
 
-2. **도구 스키마 로드**: 아래 세 도구가 아직 로드되지 않았다면 먼저 ToolSearch를 호출한다.
+2. **도구 스키마 로드**: 아래 세 도구가 아직 로드되지 않았다면 먼저 ToolSearch를 호출한다. MCP 서버 접두사(`mcp__<server-id>__`)는 연결될 때마다 바뀔 수 있으므로, 접두사를 하드코딩하지 말고 도구 이름 키워드로 검색한다.
    ```
-   ToolSearch(query: "select:mcp__4c5d5ffb-ce30-4eb3-9950-d82d90ed70df__youtube_video_enhanced,mcp__4c5d5ffb-ce30-4eb3-9950-d82d90ed70df__youtube_channel_get,mcp__4c5d5ffb-ce30-4eb3-9950-d82d90ed70df__youtube_video_transcript")
+   ToolSearch(query: "youtube_video_enhanced youtube_channel_get youtube_video_transcript")
    ```
 
 3. **영상/채널 정보 조회** (병렬로 호출 가능):
