@@ -2,6 +2,8 @@
 
 My personal [Claude Code](https://claude.com/product/claude-code) configuration, built on top of the [SuperClaude Framework](https://github.com/SuperClaude-Org/SuperClaude_Framework). This is what actually loads into every Claude Code session I run — not a demo, my day-to-day setup.
 
+How this setup is actually used — case studies verified against Claude Code session logs — lives in a separate repo: [claude-code-case-studies](https://github.com/YangJinmo/claude-code-case-studies).
+
 ## What this is
 
 `CLAUDE.md` is the entry point Claude Code reads on startup. It imports every file in this repo, which together define:

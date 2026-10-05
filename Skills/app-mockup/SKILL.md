@@ -106,7 +106,7 @@ python3 -c "from PIL import Image; print(Image.open('원본.png').size)"
   python3 scripts/compose_with_frame.py --frame assets/frames/iphone-8-silver.png --out out.png shot1.png shot2.png ...
   ```
   의존성은 opencv-python-headless, numpy, pillow (빨간 캡슐 제거 스크립트와 동일 — venv 안내는 4-3번 참고).
-- 출처: Sketch 기기 목업 팩(Apple iPhone 8 / iPhone XS / Samsung Galaxy S21 5G)에서 내보낸 PNG. 고해상도(@2x~@4x) 버전은 용량 때문에 포함하지 않았다.
+- 출처: [Design at Meta — Devices](https://www.meta.com/design-at-meta/tools/devices/)에서 받은 기기 프레임(Apple iPhone 8 / iPhone XS / Samsung Galaxy S21 5G)을 PNG로 내보낸 것. **라이선스상 재배포·공개 저장소 업로드 금지**, 프로토타입 제작·표시 목적으로만 사용 가능하고 상업적 사용은 Meta의 서면 허가가 필요하다 ([라이선스](https://www.meta.com/design-at-meta/license/)). 그래서 이 PNG들은 로컬 스킬 폴더에만 두고 GitHub에는 올리지 않는다 (`assets/frames/.gitignore`로 제외). 사용자가 앱스토어/마케팅 등 상업 용도로 쓰려 하면 이 제한을 알려준다. 고해상도(@2x~@4x) 버전은 용량 때문에 포함하지 않았다.
 
 ## 브라우저 자동화 목업 서비스 사용 (2차 우선 — 실물 프레임 에셋을 못 찾았을 때)
 
