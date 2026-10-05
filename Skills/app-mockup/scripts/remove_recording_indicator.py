@@ -33,14 +33,33 @@ FONT_CANDIDATES = [
 
 
 def find_red_capsule_mask(img_bgr, search_region=(0, 0, 140, 60)):
-    """상태바 좌측 영역에서 R>130 and (R-G)>40 and (R-B)>40 조건의 빨간 픽셀을 마스크로 만든다."""
+    """상태바 좌측 영역에서 R>130 and (R-G)>40 and (R-B)>40 조건의 빨간 픽셀을 마스크로 만든다.
+
+    주의: 앱 로고/버튼 등 다른 빨간색 UI 요소가 검색 영역 안에 함께 들어오면 같은 색으로
+    잡혀 하나의 바운딩박스로 합쳐질 수 있다 (실제로 "엄선" 앱 로고가 이 문제로 인페인팅에
+    같이 뭉개진 사례가 있었음). 그래서 색 마스크를 구한 뒤 연결 요소(connected components)로
+    쪼개고, 그중 "화면 맨 위 가장자리(y<=3)에 닿아 있고 캡슐다운 가로로 긴 형태(넓이 40px
+    이상, 높이 45px 이하)인 덩어리"만 캡슐로 인정한다. 이 조건에 맞는 덩어리가 없으면
+    캡슐이 없다고 판단한다 — 조건에 안 맞는 빨간 덩어리(로고 등)를 캡슐로 오인해 지우는
+    것보다 아무것도 안 지우는 쪽이 안전하다.
+    """
     x0, y0, x1, y1 = search_region
     x1, y1 = min(x1, img_bgr.shape[1]), min(y1, img_bgr.shape[0])
     roi = img_bgr[y0:y1, x0:x1].astype(np.int16)
     b, g, r = roi[..., 0], roi[..., 1], roi[..., 2]
     red = (r > 130) & ((r - g) > 40) & ((r - b) > 40)
+    roi_mask = red.astype(np.uint8) * 255
+
+    num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(roi_mask, connectivity=8)
     mask = np.zeros(img_bgr.shape[:2], dtype=np.uint8)
-    mask[y0:y1, x0:x1] = red.astype(np.uint8) * 255
+    for label in range(1, num_labels):
+        lx, ly, lw, lh, _area = stats[label]
+        # 캡슐은 상태바 상단 여백(보통 8~12px) 아래 y<=20 안쪽에서 시작하고, 가로로 넓은
+        # 알약형(폭>=40px, 높이<=45px)이다. 로고 글자 획은 폭이 훨씬 좁아 이 조건에서 걸러진다.
+        near_top = ly <= 20
+        capsule_shaped = lw >= 40 and lh <= 45
+        if near_top and capsule_shaped:
+            mask[y0:y1, x0:x1][labels == label] = 255
     return mask
 
 
